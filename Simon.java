@@ -10,6 +10,7 @@ public class Simon extends JFrame implements ActionListener  {
     JFrame frame;
 
     Tiles[] tiles;
+    List<Tiles> liste = new List<Tiles>();
 
     public Simon(int gridX, int gridY, JFrame frame){
 
@@ -22,11 +23,27 @@ public class Simon extends JFrame implements ActionListener  {
         GenerateTiles();
 
 
+        
+
+
     }
 
     public void actionPerformed(ActionEvent e) {
 
     }
+
+
+    public void ListeAddTile() {
+
+        Random random = new Random();
+        int r = random.nextInt(tiles.length);
+
+
+        liste.AddNode(tiles[r]);
+
+
+    }
+
 
 
     public void GenerateTiles() {
