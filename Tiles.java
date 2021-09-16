@@ -9,12 +9,12 @@ public class Tiles extends JFrame {
 
     JButton button;
     String hex;
-
-    Tiles(String hex, ActionListener action) {
+    int number;
+    Tiles(String hex, ActionListener action, int n) {
 
         this.hex = hex;
-
-        button = new JButton();
+        this.number = n;
+        button = new JButton(""+n);
         button.setBackground(Color.decode(hex));
         button.setBorder(BorderFactory.createLineBorder(Color.decode(hex)));
         
@@ -30,11 +30,7 @@ public class Tiles extends JFrame {
 
         button.setBackground(invert(Color.decode(hex)));
 
-        try {
-            Thread.sleep(600);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
+       
 
         button.setBackground(Color.decode(hex));
 

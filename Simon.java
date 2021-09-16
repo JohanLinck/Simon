@@ -12,6 +12,8 @@ public class Simon extends JFrame implements ActionListener  {
     Tiles[] tiles;
     List<Tiles> liste = new List<Tiles>();
 
+    public boolean reihenfolge = true; 
+
     public Simon(int gridX, int gridY, JFrame frame){
 
         System.out.println("Generated");
@@ -21,28 +23,92 @@ public class Simon extends JFrame implements ActionListener  {
         frame.setLayout(new GridLayout(gridx,gridy,0,0));
         this.tiles = new Tiles[gridY * gridX];
         GenerateTiles();
-
         
+        ListeAddTile();
         
 
 
     }
 
     public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource().getClass() == new JButton().getClass()) {
+
+            if (liste.GetCurrent() == null) 
+            {ListeAddTile(); liste.ToHead(); }
+            
+            if(e.getSource() == liste.GetCurrent().getContent().GetButton()) {
+                    
+                    if (liste.GetCurrent().GetNextNode() == null) {
+
+                        ListeAddTile(); liste.ToHead(); 
+
+                    } else {liste.Next();}
+                
+                    
+               } else {
+
+                System.out.println("falsch");
+                liste.ToHead();
+
+            }   
+            
+            
+
+        }
+
         
+        
+
+
     }
 
 
     public void ListeAddTile() {
 
+       
+
+
+
         Random random = new Random();
         int r = random.nextInt(tiles.length);
-
+        System.out.println(tiles[r].number);
         tiles[r].Leuchte();
         liste.AddNode(tiles[r]);
 
 
+
+        Glow();
+
+
+
+
+        liste.ToHead();
+
+
+
+
+
     }
+
+
+    public void Glow() {
+
+        liste.ToHead();
+
+        if (liste.GetHead() == liste.GetTail()) {liste.GetHead().getContent().Leuchte();}
+
+        while (liste.GetCurrent().GetNextNode() != null) {
+
+            liste.GetCurrent().getContent().Leuchte();
+            liste.Next();
+
+        }
+
+
+    }
+
+
 
 
 
@@ -50,11 +116,11 @@ public class Simon extends JFrame implements ActionListener  {
 
         for (int i = 0; i < (gridy * gridx); i++ ) {
 
-            tiles[i] = new Tiles(RandomColor() , this);
+            tiles[i] = new Tiles(RandomColor() , this, i);
             frame.add(tiles[i].GetButton());
         }
 
-
+        liste.ToHead();
     }
 
     public String RandomColor() {
@@ -73,6 +139,10 @@ public class Simon extends JFrame implements ActionListener  {
         return colorCode;
     }
 
+    public boolean GetReihenfolge() {
 
+        return reihenfolge;
+
+    }
 
 }

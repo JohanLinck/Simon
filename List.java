@@ -8,6 +8,9 @@ public class List<ContentType>  {
 		head = new Node(null);
 		tail = new Node(null);
 		current = new Node(null);
+
+		
+
 	}
 	
 	
@@ -50,6 +53,7 @@ public class List<ContentType>  {
 		if (head.IsEmpty()) {
 			head = nNode;
 			tail = nNode;
+			
 		} else {
 					tail.SetNextNode(nNode);
 					tail = nNode;
@@ -94,7 +98,7 @@ public class List<ContentType>  {
 	
 	public void Next() {
 		
-		if(!head.IsEmpty() || !current.GetNextNode().IsEmpty()) {
+		if(!head.IsEmpty() || current != null) {
 			current = current.GetNextNode();
 		}
 	}
