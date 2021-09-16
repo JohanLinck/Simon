@@ -22,14 +22,14 @@ public class Simon extends JFrame implements ActionListener  {
         this.tiles = new Tiles[gridY * gridX];
         GenerateTiles();
 
-
+        
         
 
 
     }
 
     public void actionPerformed(ActionEvent e) {
-
+        
     }
 
 
@@ -38,7 +38,7 @@ public class Simon extends JFrame implements ActionListener  {
         Random random = new Random();
         int r = random.nextInt(tiles.length);
 
-
+        tiles[r].Leuchte();
         liste.AddNode(tiles[r]);
 
 

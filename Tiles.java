@@ -31,7 +31,7 @@ public class Tiles extends JFrame {
         button.setBackground(invert(Color.decode(hex)));
 
         try {
-            Thread.sleep(400);
+            Thread.sleep(600);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
