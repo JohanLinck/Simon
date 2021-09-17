@@ -14,16 +14,23 @@ public class Simon extends JFrame implements ActionListener  {
 
     public boolean reihenfolge = true; 
 
-    public Simon(int gridX, int gridY, JFrame frame){
+    public Simon(int gridX, int gridY){
+
+        frame = new JFrame();
+   
+    
+        frame.setTitle("Simon");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 500);
+        
 
         System.out.println("Generated");
         this.gridx = gridX;
         this.gridy = gridY;
-        this.frame = frame;
         frame.setLayout(new GridLayout(gridx,gridy,0,0));
         this.tiles = new Tiles[gridY * gridX];
         GenerateTiles();
-        
+        frame.setVisible(true);
         ListeAddTile();
         
 
